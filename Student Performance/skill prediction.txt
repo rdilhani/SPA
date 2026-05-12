@@ -1,1 +1,0 @@
-streamlit run "E:\RESEARCH DOCUMENTS\Research Projects\Student Performance\student_performance_prediction.py"
