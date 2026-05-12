@@ -195,12 +195,12 @@ This project contributes to:
 
 ## 📄 Citation (Zenodo)
 
-After publishing on Zenodo, include:
+
 
 ```
 Wepathana, Y. M. R. D. (2025). 
 Student Performance Evaluation and Skill Domain Prediction using Machine Learning. 
-Zenodo. https://doi.org/xxxxx
+[Zenodo. https://doi.org/xxxxx](https://doi.org/10.5281/zenodo.20144619)
 ```
 
 ---
