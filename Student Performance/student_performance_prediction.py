@@ -13,9 +13,8 @@ import numpy as np
 import pandas as pd
 
 #load the trained model
+performance_model = pickle.load(open('E:/RESEARCH DOCUMENTS/Research Projects/Student Performance/student_skill_model.sav', 'rb'))
 
-performance_model = pickle.load(open('student_skill_model.sav', 'rb'))
-            
 # Load the saved encoders
 with open('math_grade_encoder.pkl', 'rb') as file:
     le_math = pickle.load(file)
@@ -72,27 +71,6 @@ def calculate_fai_auto(assignments, max_mark=100):
     normalized = [a / max_mark for a in assignments]
     return np.mean(normalized)
 
-def predict_competency(gpa, fai, internship):
-    score = (0.4 * gpa/4) + (0.4 * fai) + (0.2 * internship)
-
-    if score >= 0.85:
-        return "Innovative"
-    elif score >= 0.70:
-        return "Proficient"
-    elif score >= 0.55:
-        return "Competent"
-    elif score >= 0.40:
-        return "Developing"
-    else:
-        return "Foundational"
-
-def weak_area_analysis(analytical, communication, practical):
-    return {
-        "Analytical Skills": analytical,
-        "Communication Skills": communication,
-        "Practical Skills": practical
-    }
-
 def generate_weak_area_recommendations(weak_areas):
     recs = []
     is_weak=True
@@ -137,14 +115,6 @@ def future_pathways(level):
     }
     return pathways.get(level, [])
 
-
-#with st.sidebar:
-#selected = option_menu('Skill Prediction',
-        #                   ['Competancy Level','Skill','Recommendations'],
-              #             icons=['bar-chart-fill', 'tools', 'lightbulb-fill'],
-           #                default_index=0)
-    
-#if selected == 'Competancy Level':
 
 st.header("🧾 Student Data Input") 
         
@@ -202,32 +172,7 @@ with col2:
         ####################
                 
         if st.button("🚀 Evaluate Student Performance"):
-            competency = predict_competency(gpa, fai, internship_score)
-            evaluated=True
-    
-            st.subheader("🎯 Predicted Competency Level")
-            st.success(f"**{competency}**")
-
-  
-            #analytical = (grade_map[math_grade] + fai) / 2
-            #communication = (grade_map[eng_grade] + fai) / 2
-            #practical = fai
             
-               # st.subheader("🔍 Weak Area Analysis")
-              #  weak_areas = weak_area_analysis(analytical, communication, practical)
-            
-               # for area, score in weak_areas.items():
-                #        st.write(f"{area}: {int(score*100)}%")
-                #        st.progress(float(score))
-            
-               # st.subheader("📌 Targeted Improvement Recommendations")
-               # for rec in generate_weak_area_recommendations(weak_areas):
-               #         st.info(rec)
-            
-              #  st.subheader("🎓 Future Academic & Career Pathways")
-             #   for path in future_pathways(competency):
-               #         st.success(path)  
-                        
             try:
                     # 1. Transform categorical text inputs into numbers
                                 
@@ -261,7 +206,9 @@ with col2:
                 'Internship',
                 'Program'
                 ]
-            
+            competency = performance_model.predict(features)[0]
+            st.success(f"Competency Level: **{competency[0]}**")
+                                        
             st.subheader("📊 Feature Importance")
             
             importance = pd.Series(
@@ -282,14 +229,6 @@ if evaluated:
                     'Practical Skills': "Focus on hands-on training and supervised internship activities."
                     }
               
-                
-                                        
-                                       # ---- Predicting Competency ----
-                                
-                #competency_level = performance_model.predict(features)
-                #st.success(f"Competency Level: **{competency_level[0]}**")
-                                        
-                #st.success(f"Predicted Skill Domain: **{comp_predict}**")
                                         
                                         
                                         # ---- Skill Dimentions ----
