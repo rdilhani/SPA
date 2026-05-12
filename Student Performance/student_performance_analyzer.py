@@ -13,14 +13,18 @@ import numpy as np
 import pandas as pd
 
 #load the trained model
-performance_model = pickle.load(open('E:/RESEARCH DOCUMENTS/Research Projects/Student Performance/student_skill_model.sav', 'rb'))
-
+with open('student_skill_model.sav', 'rb') as file:
+    performance_model = pickle.load(file)
+            
 # Load the saved encoders
-#le_math = pickle.load(open('E:/RESEARCH DOCUMENTS/Research Projects/Student Performance/math_grade_encoder.pkl', 'rb'))
-le_math = joblib.load("E:/RESEARCH DOCUMENTS/Research Projects/Student Performance/math_grade_encoder.pkl")
-le_english = pickle.load(open('E:/RESEARCH DOCUMENTS/Research Projects/Student Performance/english_grade_encoder.pkl', 'rb'))
-le_internship = pickle.load(open('E:/RESEARCH DOCUMENTS/Research Projects/Student Performance/internship_encoder.pkl', 'rb'))
-le_program = pickle.load(open('E:/RESEARCH DOCUMENTS/Research Projects/Student Performance/program_encoder.pkl', 'rb'))
+with open('math_grade_encoder.pkl', 'rb') as file:
+    le_math = pickle.load(file)
+with open('english_grade_encoder.pkl', 'rb') as file:
+    le_english = pickle.load(file)
+with open('internship_encoder.pkl', 'rb') as file:
+    le_internship = pickle.load(file)
+with open('program_encoder.pkl', 'rb') as file:
+    le_program = pickle.load(file)
 
 # --------------------------------------------------
 # PAGE CONFIGURATION
