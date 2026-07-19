@@ -78,7 +78,7 @@ Skill domains are categorized into:
 
    * Algorithms used:
 
-          * Random Forest
+          * XGBClassifier
     
 
 5. **Model Evaluation**
@@ -87,7 +87,7 @@ Skill domains are categorized into:
    * Precision
    * Recall
    * F1-score
-     ✅ Achieved accuracy: **96%**
+     ✅ Achieved accuracy: **94%**
 
 6. **Deployment**
 
