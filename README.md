@@ -144,7 +144,7 @@ streamlit run app.py
 ## 📂 Project Structure
 
 ```
-├── models/                             # Pre trained data encorder (.pkl)
+├── encoders/                           # Pre trained data encorder (.pkl)
 ├── student_skill_model.sav             # ML Model
 ├── student_perfirmance_prediction.py   # Streamlit application
 └── README.md                           # Project documentation
