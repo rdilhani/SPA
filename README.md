@@ -144,13 +144,10 @@ streamlit run app.py
 ## 📂 Project Structure
 
 ```
-├── data/                  # Dataset (synthetic)
-├── models/                # Trained ML models (.pkl)
-├── app.py                 # Streamlit application
-├── preprocessing.py       # Data preprocessing scripts
-├── training.py            # Model training scripts
-├── requirements.txt       # Dependencies
-└── README.md              # Project documentation
+├── models/                             # Pre trained data encorder (.pkl)
+├── student_skill_model.sav             # ML Model
+├── student_perfirmance_prediction.py   # Streamlit application
+└── README.md                           # Project documentation
 ```
 
 ---
